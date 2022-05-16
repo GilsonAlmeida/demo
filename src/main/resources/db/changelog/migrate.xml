@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet author="gilson" id="1">
+        <preConditions onFail="MARK_RAN" onFailMessage="Tabela usuario já existe">
+            <not>
+                <tableExists tableName="usuario"/>
+            </not>
+        </preConditions>
+        <createTable tableName="usuario">
+            <column name="ID" type="${numerico}">
+                <constraints primaryKey="true" primaryKeyName="PK_USUARIO"/>
+            </column>
+            <column name="login" type="${descricaomedia}"/>
+            <column name="SENHA" type="${descricaomedia}"/>
+            <column name="ATIVO" type="${logico}"/>
+        </createTable>
+
+    </changeSet>
+
+    <changeSet author="gilson" id="2">
+        <preConditions onFail="MARK_RAN" onFailMessage="Tabela pauta já existe">
+            <not>
+                <tableExists tableName="pauta"/>
+            </not>
+        </preConditions>
+        <createTable tableName="pauta">
+            <column name="ID" type="${numerico}">
+                <constraints primaryKey="true" primaryKeyName="PK_PAUTA"/>
+            </column>
+            <column name="descricao" type="${descricao2000}"/>
+        </createTable>
+
+    </changeSet>
+
+    <changeSet author="gilson" id="3">
+        <preConditions onFail="MARK_RAN" onFailMessage="Tabela sessao já existe">
+            <not>
+                <tableExists tableName="sessao"/>
+            </not>
+        </preConditions>
+        <createTable tableName="sessao">
+            <column name="ID" type="${numerico}">
+                <constraints primaryKey="true" primaryKeyName="PK_SESSAO"/>
+            </column>
+            <column name="tempo" type="${numerico}"/>
+            <column name="abertura" type="${datahora}"/>
+            <column name="pauta_id" type="${numerico}">
+                <constraints foreignKeyName="FK_SESSAO_PAUTA" nullable="false" referencedColumnNames="id"
+                             referencedTableName="pauta"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="gilson" id="4">
+        <preConditions onFail="MARK_RAN" onFailMessage="Tabela voto já existe">
+            <not>
+                <tableExists tableName="voto"/>
+            </not>
+        </preConditions>
+        <createTable tableName="voto">
+            <column name="ID" type="${numerico}">
+                <constraints primaryKey="true" primaryKeyName="PK_VOTO"/>
+            </column>
+            <column name="voto" type="${sigla}"/>
+            <column name="usuario_id" type="${numerico}">
+                <constraints foreignKeyName="FK_VOTO_USUARIO" referencedTableName="USUARIO" referencedColumnNames="ID"/>
+            </column>
+            <column name="sessao_id" type="${numerico}">
+                <constraints foreignKeyName="FK_SESSAO_VOTO" referencedTableName="SESSAO" referencedColumnNames="ID"/>
+            </column>
+
+        </createTable>
+    </changeSet>
+
+    <changeSet id="5" author="gilson">
+        <preConditions onFail="MARK_RAN" onFailMessage="Sequência PAUTA_SEQ já existe.">
+            <not>
+                <sequenceExists sequenceName="PAUTA_SEQ"/>
+            </not>
+        </preConditions>
+        <createSequence sequenceName="PAUTA_SEQ" startValue="1" incrementBy="1"/>
+    </changeSet>
+
+    <changeSet id="6" author="gilson">
+        <preConditions onFail="MARK_RAN" onFailMessage="Sequência SESSAO_SEQ já existe.">
+            <not>
+                <sequenceExists sequenceName="SESSAO_SEQ"/>
+            </not>
+        </preConditions>
+        <createSequence sequenceName="SESSAO_SEQ" startValue="1" incrementBy="1"/>
+    </changeSet>
+
+    <changeSet id="7" author="gilson">
+        <preConditions onFail="MARK_RAN" onFailMessage="Sequência USUARIO_SEQ já existe.">
+            <not>
+                <sequenceExists sequenceName="USUARIO_SEQ"/>
+            </not>
+        </preConditions>
+        <createSequence sequenceName="USUARIO_SEQ" startValue="1" incrementBy="1"/>
+    </changeSet>
+
+    <changeSet id="8" author="gilson">
+        <preConditions onFail="MARK_RAN" onFailMessage="Sequência VOTO_SEQ já existe.">
+            <not>
+                <sequenceExists sequenceName="VOTO_SEQ"/>
+            </not>
+        </preConditions>
+        <createSequence sequenceName="VOTO_SEQ" startValue="1" incrementBy="1"/>
+    </changeSet>
+
+</databaseChangeLog>

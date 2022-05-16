@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog logicalFilePath="db-changelog-master.xml" xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <property name="arquivo" value="blob" dbms="oracle"/>
+    <property name="arquivo" value="bytea" dbms="postgresql"/>
+    <property name="texto" value="clob" dbms="oracle"/>
+    <property name="texto" value="bytea" dbms="postgresql"/>
+    <property name="text" value="text" dbms="postgresql"/>
+
+    <property name="monetario" value="java.sql.Types.NUMERIC(24,4)" dbms="oracle,postgresql"/>
+    <property name="decimal" value="java.sql.Types.NUMERIC(19,2)" dbms="oracle,postgresql"/>
+    <property name="decimallongo" value="java.sql.Types.NUMERIC(24,8)" dbms="oracle,postgresql"/>
+    <property name="numerico" value="java.sql.Types.NUMERIC(10,0)" dbms="oracle,postgresql"/>
+    <property name="numerico22" value="java.sql.Types.NUMERIC(22,0)" dbms="oracle,postgresql"/>
+    <property name="numero" value="java.sql.Types.NUMERIC(19,0)" dbms="oracle,postgresql"/>
+    <property name="inteiro" value="java.sql.Types.NUMERIC(20,0)" dbms="oracle,postgresql"/>
+    <property name="inteiromenor" value="java.sql.Types.NUMERIC(5,0)" dbms="oracle,postgresql"/>
+
+    <property name="hora" value="java.sql.Types.TIME" dbms="oracle,postgresql"/>
+    <property name="data" value="java.sql.Types.DATE" dbms="oracle,postgresql"/>
+    <property name="datahora" value="java.sql.Types.TIMESTAMP" dbms="oracle,postgresql"/>
+
+    <property name="caracter" value="java.sql.Types.VARCHAR(1)" dbms="oracle,postgresql"/>
+    <property name="descricao2" value="java.sql.Types.VARCHAR(2)" dbms="oracle,postgresql"/>
+    <property name="sigla" value="java.sql.Types.VARCHAR(3)" dbms="oracle,postgresql"/>
+
+    <property name="descricaocurta" value="java.sql.Types.VARCHAR(20)" dbms="oracle,postgresql"/>
+    <property name="descricao12" value="java.sql.Types.VARCHAR(12)" dbms="oracle,postgresql"/>
+    <property name="descricao15" value="java.sql.Types.VARCHAR(15)" dbms="oracle,postgresql"/>
+    <property name="descricao40" value="java.sql.Types.VARCHAR(40)" dbms="oracle,postgresql"/>
+    <property name="descricao50" value="java.sql.Types.VARCHAR(50)" dbms="oracle,postgresql"/>
+    <property name="descricaomedia" value="java.sql.Types.VARCHAR(70)" dbms="oracle,postgresql"/>
+    <property name="descricaousuario" value="java.sql.Types.VARCHAR(250)" dbms="oracle,postgresql"/>
+    <property name="descricaolonga" value="java.sql.Types.VARCHAR(255)" dbms="oracle,postgresql"/>
+    <property name="descricaoextralonga" value="java.sql.Types.VARCHAR(3000)" dbms="oracle,postgresql"/>
+    <property name="descricao4000" value="java.sql.Types.VARCHAR(4000)" dbms="oracle,postgresql"/>
+    <property name="descricao1000" value="java.sql.Types.VARCHAR(1000)" dbms="oracle,postgresql"/>
+    <property name="descricao200" value="java.sql.Types.VARCHAR(200)" dbms="oracle,postgresql"/>
+    <property name="descricao500" value="java.sql.Types.VARCHAR(500)" dbms="oracle,postgresql"/>
+    <property name="descricao2000" value="java.sql.Types.VARCHAR(2000)" dbms="oracle,postgresql"/>
+
+    <property name="logico" value="java.sql.Types.BOOLEAN" dbms="oracle,postgresql"/>
+
+
+    <include  file="migrate.xml" relativeToChangelogFile="true"/>
+
+
+</databaseChangeLog>
